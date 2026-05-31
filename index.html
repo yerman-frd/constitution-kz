@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конституция РК: Понятно каждому</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:       #1B4F35;
+      --green-mid:   #2D6E4A;
+      --green-pale:  #E8F2EC;
+      --beige:       #FAFAF7;
+      --beige-dark:  #F0F0EB;
+      --yellow:      #FFF8E1;
+      --yellow-acc:  #F9A825;
+      --text:        #1A1A1A;
+      --muted:       #6B7280;
+      --border:      #E5E5E0;
+      --white:       #FFFFFF;
+      --red:         #DC2626;
+      --ok:          #16A34A;
+      --f-head:      'Playfair Display', Georgia, serif;
+      --f-body:      'Nunito', system-ui, sans-serif;
+      --r:           12px;
+      --shadow:      0 2px 16px rgba(0,0,0,.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f-body); background: var(--beige); color: var(--text); line-height: 1.72; font-size: 16px; }
+
+    /* ── TYPOGRAPHY ─────────────────────────────── */
+    h1,h2,h3,h4 { font-family: var(--f-head); line-height: 1.25; }
+    h1 { font-size: clamp(2rem,5vw,3rem); }
+    h2 { font-size: clamp(1.5rem,3.5vw,2.25rem); }
+    h3 { font-size: clamp(1.1rem,2.5vw,1.4rem); }
+    p  { margin-bottom: .75rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LAYOUT ─────────────────────────────────── */
+    .container  { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    section     { padding: 64px 0; }
+    .s-label    { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .s-title    { margin-bottom: 14px; }
+    .s-sub      { color: var(--muted); font-size: 1.05rem; margin-bottom: 40px; max-width: 600px; }
+    .t-center   { text-align: center; }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 20px; max-width: 860px; margin: 0 auto; }
+    .nav-logo  { font-family: var(--f-head); font-size: 1rem; font-weight: 700; color: var(--green); text-decoration: none; white-space: nowrap; }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta   { background: var(--green); color: var(--white) !important; padding: 8px 18px; border-radius: 50px; transition: background .2s !important; }
+    .nav-cta:hover { background: var(--green-mid) !important; }
+    @media (max-width: 580px) { .nav-links { display: none; } }
+
+    /* ── HERO ────────────────────────────────────── */
+    #hero { background: linear-gradient(145deg, var(--green) 0%, var(--green-mid) 100%); color: var(--white); padding: 88px 0 76px; text-align: center; }
+    #hero h1 { color: var(--white); margin-bottom: 20px; }
+    #hero p  { font-size: 1.1rem; color: rgba(255,255,255,.84); max-width: 520px; margin: 0 auto 36px; }
+    .hero-stats { display: flex; justify-content: center; gap: 44px; margin-bottom: 40px; flex-wrap: wrap; }
+    .h-stat-num   { font-family: var(--f-head); font-size: 2.4rem; font-weight: 700; display: block; }
+    .h-stat-label { font-size: .82rem; color: rgba(255,255,255,.72); }
+
+    /* ── BUTTONS ─────────────────────────────────── */
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 50px; font-family: var(--f-body); font-size: 1rem; font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: all .2s; }
+    .btn-white { background: var(--white); color: var(--green); }
+    .btn-white:hover { background: var(--beige); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,.18); }
+    .btn-green { background: var(--green); color: var(--white); }
+    .btn-green:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(27,79,53,.3); }
+
+    /* ── PLAN ────────────────────────────────────── */
+    #plan { background: var(--beige-dark); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 20px; margin-top: 40px; }
+    .step-card { background: var(--white); border-radius: var(--r); padding: 26px 22px; box-shadow: var(--shadow); }
+    .step-num  { width: 36px; height: 36px; background: var(--green); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .88rem; margin-bottom: 14px; }
+    .step-title{ font-family: var(--f-head); font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .step-desc { font-size: .88rem; color: var(--muted); margin: 0; }
+
+    /* ── ACCORDION ───────────────────────────────── */
+    #learn { background: var(--white); }
+    .accordion { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+    .ac-item   { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: box-shadow .2s, border-color .2s; }
+    .ac-item.open { box-shadow: var(--shadow); border-color: var(--green); }
+
+    .ac-head   { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; cursor: pointer; background: var(--white); user-select: none; gap: 14px; transition: background .15s; }
+    .ac-head:hover { background: var(--green-pale); }
+    .ac-item.open .ac-head { background: var(--green-pale); }
+
+    .ac-head-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+    .ac-icon { width: 40px; height: 40px; background: var(--green-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; transition: background .2s; }
+    .ac-item.open .ac-icon { background: var(--green); }
+
+    .ac-title { font-family: var(--f-head); font-size: .97rem; font-weight: 600; color: var(--text); }
+    .ac-meta  { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+    .ac-arrow { color: var(--green); font-size: 1.1rem; transition: transform .3s; flex-shrink: 0; }
+    .ac-item.open .ac-arrow { transform: rotate(180deg); }
+
+    .ac-body  { max-height: 0; overflow: hidden; transition: max-height .38s ease; }
+    .ac-item.open .ac-body { max-height: 2000px; }
+    .ac-inner { padding: 4px 22px 24px; }
+
+    .concept    { margin-bottom: 16px; }
+    .concept h4 { font-family: var(--f-body); font-size: .93rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
+    .concept p  { font-size: .93rem; margin: 0; }
+
+    .analogy { background: var(--yellow); border-left: 3px solid var(--yellow-acc); border-radius: 8px; padding: 14px 18px; margin: 18px 0; }
+    .a-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--yellow-acc); margin-bottom: 5px; }
+    .analogy p { font-size: .93rem; margin: 0; }
+
+    .reform-badge { display: inline-block; background: var(--green-pale); color: var(--green); font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 50px; margin-bottom: 14px; }
+
+    /* ── REVIEWS ─────────────────────────────────── */
+    #reviews { background: var(--beige-dark); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 40px; }
+    @media (max-width: 580px) { .reviews-grid { grid-template-columns: 1fr; } }
+    .rv-card  { background: var(--white); border-radius: var(--r); padding: 22px; box-shadow: var(--shadow); }
+    .rv-stars { color: #F59E0B; font-size: .95rem; margin-bottom: 10px; }
+    .rv-text  { font-size: .93rem; font-style: italic; color: var(--text); margin-bottom: 14px; }
+    .rv-author{ display: flex; align-items: center; gap: 10px; }
+    .rv-avatar{ width: 38px; height: 38px; background: var(--green); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .8rem; flex-shrink: 0; }
+    .rv-name  { font-weight: 700; font-size: .88rem; }
+    .rv-city  { font-size: .78rem; color: var(--muted); }
+
+    /* ── QUIZ ────────────────────────────────────── */
+    #quiz { background: var(--white); }
+    .quiz-wrap { max-width: 680px; margin: 40px auto 0; }
+
+    .qz-prog  { margin-bottom: 22px; }
+    .qz-prog-row { display: flex; justify-content: space-between; font-size: .83rem; color: var(--muted); margin-bottom: 7px; }
+    .prog-bar { height: 6px; background: var(--beige-dark); border-radius: 50px; overflow: hidden; }
+    .prog-fill{ height: 100%; background: var(--green); border-radius: 50px; transition: width .4s ease; }
+
+    .qz-card  { background: var(--beige); border-radius: var(--r); padding: 28px 26px; }
+    .qz-q     { font-family: var(--f-head); font-size: 1.15rem; font-weight: 600; margin-bottom: 22px; }
+    .qz-opts  { display: flex; flex-direction: column; gap: 10px; }
+
+    .qz-opt   { background: var(--white); border: 2px solid var(--border); border-radius: 10px; padding: 13px 16px; cursor: pointer; font-size: .93rem; font-family: var(--f-body); text-align: left; transition: all .18s; width: 100%; }
+    .qz-opt:hover:not(:disabled) { border-color: var(--green); background: var(--green-pale); }
+    .qz-opt.correct { border-color: var(--ok); background: #F0FDF4; color: var(--ok); font-weight: 700; }
+    .qz-opt.wrong   { border-color: var(--red); background: #FEF2F2; color: var(--red); }
+
+    .qz-exp   { margin-top: 18px; padding: 13px 16px; background: var(--green-pale); border-radius: 10px; font-size: .88rem; color: var(--green); display: none; }
+    .qz-exp.show { display: block; }
+
+    .qz-next  { margin-top: 16px; display: none; }
+    .qz-next.show { display: block; }
+
+    .qz-result { text-align: center; padding: 48px 20px; display: none; }
+    .qz-result.show { display: block; }
+    .res-score { font-family: var(--f-head); font-size: 4rem; font-weight: 700; color: var(--green); display: block; margin-bottom: 6px; }
+    .res-level { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+    .res-desc  { color: var(--muted); margin-bottom: 28px; }
+
+    /* ── PAYMENT ─────────────────────────────────── */
+    #payment { background: var(--green); color: var(--white); }
+    #payment .s-label { color: rgba(255,255,255,.65); }
+    #payment .s-title { color: var(--white); }
+    #payment .s-sub   { color: rgba(255,255,255,.72); }
+
+    .pay-card { background: var(--white); border-radius: var(--r); padding: 38px 36px; max-width: 460px; margin: 40px auto 0; text-align: center; box-shadow: 0 8px 48px rgba(0,0,0,.22); }
+    .pay-price{ font-family: var(--f-head); font-size: 3rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+    .pay-note { font-size: .82rem; color: var(--muted); margin-bottom: 22px; }
+    .pay-list { list-style: none; text-align: left; margin-bottom: 26px; }
+    .pay-list li { padding: 8px 0; font-size: .93rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .pay-list li:last-child { border: none; }
+    .chk { color: var(--ok); font-weight: 700; }
+    .btn-kaspi { display: block; background: #E63B2D; color: var(--white); font-family: var(--f-body); font-size: 1rem; font-weight: 700; text-align: center; padding: 15px; border-radius: 50px; text-decoration: none; transition: all .2s; }
+    .btn-kaspi:hover { background: #C62D1E; transform: translateY(-2px); box-shadow: 0 4px 22px rgba(230,59,45,.38); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer { background: #111; color: rgba(255,255,255,.55); text-align: center; padding: 32px 20px; font-size: .83rem; }
+    footer strong { color: var(--white); }
+    footer a { color: #25D366; text-decoration: none; }
+
+    /* ── WHATSAPP FLOAT ──────────────────────────── */
+    .wa-btn { position: fixed; bottom: 26px; right: 26px; z-index: 999; width: 54px; height: 54px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.42); transition: all .2s; }
+    .wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.52); }
+    .wa-btn svg { width: 28px; height: 28px; fill: white; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Конституция РК</a>
+    <ul class="nav-links">
+      <li><a href="#plan">План</a></li>
+      <li><a href="#learn">Учиться</a></li>
+      <li><a href="#quiz">Тест</a></li>
+      <li><a href="#payment" class="nav-cta">Купить</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <h1>Конституция РК:<br>Понятно каждому</h1>
+    <p>Изучите все нормы Конституции Казахстана простым языком — без юридического образования, всего за 1 час.</p>
+    <div class="hero-stats">
+      <div>
+        <span class="h-stat-num">9</span>
+        <span class="h-stat-label">разделов</span>
+      </div>
+      <div>
+        <span class="h-stat-num">98</span>
+        <span class="h-stat-label">статей</span>
+      </div>
+      <div>
+        <span class="h-stat-num">~60</span>
+        <span class="h-stat-label">минут</span>
+      </div>
+    </div>
+    <a href="#plan" class="btn btn-white">Начать обучение</a>
+  </div>
+</section>
+
+<!-- ══ PLAN ══════════════════════════════════════════ -->
+<section id="plan">
+  <div class="container">
+    <div class="s-label">Как это работает</div>
+    <h2 class="s-title">Ваш план на 1 час</h2>
+    <p class="s-sub">Никаких регистраций. Никаких домашних заданий. Просто читайте в удобном темпе.</p>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Введение</div>
+        <p class="step-desc">Узнайте, что такое Конституция и зачем она нужна каждому гражданину.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Изучение разделов</div>
+        <p class="step-desc">10 блоков с простыми объяснениями и примерами из повседневной жизни.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Контрольный тест</div>
+        <p class="step-desc">10 вопросов для проверки знаний с мгновенной обратной связью.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Результат</div>
+        <p class="step-desc">Узнайте свой уровень знания Конституции и рекомендации по изучению.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LEARN ══════════════════════════════════════════ -->
+<section id="learn">
+  <div class="container">
+    <div class="s-label">Курс</div>
+    <h2 class="s-title">Конституция РК простым языком</h2>
+    <p class="s-sub">Нажмите на раздел, чтобы раскрыть его. Читайте в своём темпе.</p>
+
+    <div class="accordion">
+
+      <!-- Преамбула -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">📜</div>
+            <div>
+              <div class="ac-title">Преамбула</div>
+              <div class="ac-meta">Вступительное слово к Конституции</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <div class="concept">
+            <h4>Что такое Преамбула?</h4>
+            <p>Преамбула — вступительный текст, объясняющий, кто принял Конституцию и ради чего. Народ Казахстана принял её, чтобы создать справедливое государство, обеспечить мир и процветание для всех граждан.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Преамбула — как первый абзац договора соседей о совместном проживании: «Мы, соседи, объединились, чтобы жить в мире, уважать права друг друга и вместе заботиться об общем дворе». Она задаёт дух всего договора.</p>
+          </div>
+          <div class="concept">
+            <h4>Цели принятия Конституции</h4>
+            <p>Главные цели — создать демократическое, светское, правовое и социальное государство; обеспечить гражданский мир и согласие; сохранить и приумножить казахстанскую государственность ради будущих поколений.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел I -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">📋</div>
+            <div>
+              <div class="ac-title">Раздел I — Общие положения</div>
+              <div class="ac-meta">Статьи 1–9 · Основы государства</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <div class="concept">
+            <h4>Высшая ценность — человек</h4>
+            <p>Статья 1 прямо говорит: высшей ценностью государства являются человек, его жизнь, права и свободы. Это значит, что государство существует ради людей, а не наоборот.</p>
+          </div>
+          <div class="concept">
+            <h4>Демократия и правовое государство</h4>
+            <p>Казахстан — демократическое государство. Власть принадлежит народу и реализуется через выборы и референдумы. «Правовое государство» означает, что все — и граждане, и чиновники — обязаны соблюдать законы. Никто не выше закона.</p>
+          </div>
+          <div class="concept">
+            <h4>Разделение властей</h4>
+            <p>Государственная власть разделена на три независимые ветви: законодательную (Парламент принимает законы), исполнительную (Правительство исполняет законы) и судебную (суды разрешают споры). Это сделано, чтобы никто не мог сосредоточить всю власть в одних руках.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Разделение властей — как в школе: директор (исполнительная власть) управляет, педсовет (законодательная власть) устанавливает правила, а конфликтная комиссия (судебная власть) разбирает споры. Если бы директор делал всё сам — это была бы диктатура.</p>
+          </div>
+          <div class="concept">
+            <h4>Государственный язык</h4>
+            <p>Государственный язык Казахстана — казахский. Русский язык официально используется наравне с казахским в государственных организациях.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел II -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">👤</div>
+            <div>
+              <div class="ac-title">Раздел II — Человек и гражданин</div>
+              <div class="ac-meta">Статьи 10–39 · Права, свободы и обязанности</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <div class="concept">
+            <h4>Права и свободы граждан</h4>
+            <p>Это самый большой раздел Конституции. Он гарантирует право на жизнь, свободу слова, свободу совести, право на труд, образование, медицинскую помощь и справедливый суд. Государство обязано защищать эти права.</p>
+          </div>
+          <div class="concept">
+            <h4>Презумпция невиновности</h4>
+            <p>Каждый обвиняемый считается невиновным до тех пор, пока его вина не доказана в суде. Никто не обязан доказывать свою невиновность — это задача обвинения. Все сомнения трактуются в пользу обвиняемого.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Вас обвиняют в краже велосипеда. По принципу презумпции невиновности полиция не может требовать «докажи, что не брал» — она сама обязана доказать, что брал именно ты. До суда ты невиновен — это право, а не привилегия.</p>
+          </div>
+          <div class="concept">
+            <h4>Гражданство</h4>
+            <p>Гражданства Казахстана нельзя лишить принудительно. Гражданин имеет право вернуться на родину в любое время. Двойное гражданство Конституцией официально не признаётся.</p>
+          </div>
+          <div class="concept">
+            <h4>Обязанности граждан</h4>
+            <p>Конституция — это не только права, но и обязанности. Каждый обязан соблюдать Конституцию и законы, платить налоги, защищать Родину, уважать права других граждан и беречь природу.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел III -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">🎖️</div>
+            <div>
+              <div class="ac-title">Раздел III — Президент</div>
+              <div class="ac-meta">Статьи 40–48 · Реформы 2022 года</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <span class="reform-badge">⚡ Реформа 2022 года</span>
+          <div class="concept">
+            <h4>Роль Президента</h4>
+            <p>Президент — глава государства, символ и гарант единства народа, незыблемости Конституции, прав и свобод человека. Он определяет основные направления внутренней и внешней политики страны.</p>
+          </div>
+          <div class="concept">
+            <h4>Выборы и срок полномочий</h4>
+            <p>Президент избирается прямым голосованием всех граждан на <strong>7 лет</strong>. По реформе 2022 года: Президент может быть избран <strong>только один раз без права переизбрания</strong>. Это ключевое ограничение для предотвращения концентрации власти.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Президент — как директор компании, нанятый акционерами (народом) на 7 лет. Акционеры решили: один срок — потом приходит новый человек со свежим взглядом. Так компания не «зависает» на одном человеке десятилетиями.</p>
+          </div>
+          <div class="concept">
+            <h4>Ограничения для родственников</h4>
+            <p>Новая норма 2022 года: близкие родственники Президента не могут занимать руководящие должности в государственных органах и квазигосударственном секторе. Антикоррупционная мера против «семейного» захвата власти.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел IV -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">🗳️</div>
+            <div>
+              <div class="ac-title">Раздел IV — Парламент</div>
+              <div class="ac-meta">Статьи 49–63 · Законодательная власть</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <span class="reform-badge">⚡ Реформа 2022 года</span>
+          <div class="concept">
+            <h4>Структура Парламента</h4>
+            <p>Парламент — высший представительный орган, принимающий законы страны. Он состоит из двух палат: <strong>Мажилис</strong> (нижняя палата, 98 депутатов) и <strong>Сенат</strong> (верхняя палата, 50 сенаторов).</p>
+          </div>
+          <div class="concept">
+            <h4>Одномандатные округа (реформа 2022)</h4>
+            <p>До 2022 года все депутаты Мажилиса избирались по партийным спискам. Теперь 70 из 98 мест выбираются по одномандатным округам — каждый район страны имеет своего конкретного представителя, которого можно спросить лично.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Мажилис — как жилищный комитет дома: жильцы из каждого подъезда (округа) выбирают своего представителя, знающего их проблемы. Сенат — как совет старейшин, который проверяет решения комитета и при необходимости отправляет их на доработку.</p>
+          </div>
+          <div class="concept">
+            <h4>Как принимаются законы</h4>
+            <p>Закон принимается в Мажилисе → одобряется Сенатом → подписывается Президентом. Если Президент накладывает вето, Парламент может преодолеть его двумя третями голосов каждой палаты.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел V -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">⚙️</div>
+            <div>
+              <div class="ac-title">Раздел V — Правительство</div>
+              <div class="ac-meta">Статьи 64–70 · Исполнительная власть</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <div class="concept">
+            <h4>Что такое Правительство</h4>
+            <p>Правительство — высший орган исполнительной власти. Оно разрабатывает и исполняет государственный бюджет, проводит политику в сферах экономики, образования, здравоохранения и всего, что касается повседневной жизни граждан.</p>
+          </div>
+          <div class="concept">
+            <h4>Премьер-министр</h4>
+            <p>Премьер-министр возглавляет Правительство. Назначается Президентом с согласия Мажилиса. Именно Премьер-министр несёт ответственность за работу всего кабинета министров перед Президентом и Парламентом.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Если государство — это корпорация, то Президент — владелец бизнеса, определяющий стратегию, а Правительство во главе с Премьер-министром — команда топ-менеджеров, которая ежедневно управляет операционной деятельностью.</p>
+          </div>
+          <div class="concept">
+            <h4>Вотум недоверия</h4>
+            <p>Мажилис может выразить Правительству вотум недоверия — фактически проголосовать «уйдите в отставку». Если такое решение принято дважды подряд, Правительство обязано уйти. Это механизм парламентского контроля над исполнительной властью.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел VI -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">⚖️</div>
+            <div>
+              <div class="ac-title">Раздел VI — Конституционный суд и правосудие</div>
+              <div class="ac-meta">Статьи 71–84 · Реформы 2022 года</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <span class="reform-badge">⚡ Реформа 2022 года</span>
+          <div class="concept">
+            <h4>Конституционный суд</h4>
+            <p>Конституционный суд (КС) — орган, проверяющий законы на соответствие Конституции. Если закон противоречит ей, КС признаёт его недействительным. Восстановлен в 2022 году вместо прежнего Конституционного совета с расширенными полномочиями.</p>
+          </div>
+          <div class="concept">
+            <h4>Прямое обращение граждан (реформа 2022)</h4>
+            <p>Главная реформа 2022 года в сфере правосудия: теперь <strong>каждый гражданин</strong> вправе обратиться в Конституционный суд, если считает, что применённый в его деле закон нарушает его конституционные права. Прежде это могли делать только государственные органы.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>КС — это главный арбитр в спорте. Если игрок (гражданин) считает, что правило игры несправедливо и нарушает базовые принципы, теперь он сам может попросить арбитра его пересмотреть — раньше это право было только у тренеров (госорганов).</p>
+          </div>
+          <div class="concept">
+            <h4>Независимость судей</h4>
+            <p>Судьи независимы и подчиняются только Конституции и законам. Никто не вправе вмешиваться в осуществление правосудия. Это гарантирует объективные решения без давления со стороны власти или бизнеса.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел VII -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">🏙️</div>
+            <div>
+              <div class="ac-title">Раздел VII — Местное управление</div>
+              <div class="ac-meta">Статьи 85–89 · Акиматы и маслихаты</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <div class="concept">
+            <h4>Акиматы — местная исполнительная власть</h4>
+            <p>Акимат — местный исполнительный орган. <strong>Аким</strong> — его глава, управляющий делами области, города или района: строительство дорог, работа школ и больниц, ЖКХ, благоустройство.</p>
+          </div>
+          <div class="concept">
+            <h4>Маслихаты — местные советы депутатов</h4>
+            <p>Маслихат — местный представительный орган. Депутаты маслихата избираются населением и контролируют работу акимата, утверждают местный бюджет и принимают решения на уровне региона.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Акимат — это управляющая компания вашего района, которая следит за порядком. Маслихат — собрание жильцов дома, которое проверяет, правильно ли управляющая компания тратит деньги и выполняет свою работу.</p>
+          </div>
+          <div class="concept">
+            <h4>Выборность акимов</h4>
+            <p>После реформ часть акимов стала избираться населением напрямую — прежде всего акимы сельских округов и районов в городах. Это шаг к децентрализации власти: местные руководители становятся ответственнее перед конкретными людьми.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел VIII -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">💰</div>
+            <div>
+              <div class="ac-title">Раздел VIII — Финансы и бюджет</div>
+              <div class="ac-meta">Статьи 90–95 · Экономические основы</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <div class="concept">
+            <h4>Государственный бюджет</h4>
+            <p>Бюджет — финансовый план страны на год: сколько государство соберёт (налоги, сборы) и как потратит (зарплаты учителей и врачей, дороги, оборона, социальные выплаты). Бюджет утверждается Парламентом — без него Правительство не может тратить деньги.</p>
+          </div>
+          <div class="concept">
+            <h4>Национальный банк</h4>
+            <p>Нацбанк отвечает за денежно-кредитную политику: контролирует инфляцию, устанавливает базовую ставку и регулирует банковскую систему. Он подотчётен Президенту и выпускает единственную официальную валюту — тенге.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Государственный бюджет — как семейный бюджет, только очень большой. Парламент — все члены семьи, решающие на совете, сколько потратить на еду и коммунальные услуги. Счётный комитет — дотошная бабушка, которая проверяет каждый чек.</p>
+          </div>
+          <div class="concept">
+            <h4>Счётный комитет</h4>
+            <p>Счётный комитет по контролю за исполнением республиканского бюджета — высший орган финансового контроля. Он проверяет, как государственные органы тратят бюджетные деньги, и выявляет нарушения и растраты.</p>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Раздел IX -->
+      <div class="ac-item">
+        <div class="ac-head" onclick="toggleAc(this)">
+          <div class="ac-head-left">
+            <div class="ac-icon">✏️</div>
+            <div>
+              <div class="ac-title">Раздел IX — Поправки в Конституцию</div>
+              <div class="ac-meta">Статьи 96–98 · Порядок изменений</div>
+            </div>
+          </div>
+          <div class="ac-arrow">▼</div>
+        </div>
+        <div class="ac-body"><div class="ac-inner">
+          <span class="reform-badge">⚡ Реформа 2022 года</span>
+          <div class="concept">
+            <h4>Как изменить Конституцию</h4>
+            <p>Конституция — не обычный закон, её изменить сложно. Поправки принимаются двумя путями: через Парламент (не менее ⅔ голосов депутатов каждой палаты) или через <strong>референдум</strong> — всенародное голосование.</p>
+          </div>
+          <div class="concept">
+            <h4>Что нельзя изменить</h4>
+            <p>Некоторые основы не могут быть изменены даже через референдум: унитарность и территориальная целостность страны, форма правления. Это гарантирует стабильность государственного устройства.</p>
+          </div>
+          <div class="analogy">
+            <div class="a-label">Аналогия из жизни</div>
+            <p>Конституция — как устав организации. Чтобы его изменить, нужно собрать общее собрание и получить согласие большинства. Но некоторые фундаментальные принципы — например, некоммерческий статус — нельзя изменить вовсе: они защищают саму суть организации.</p>
+          </div>
+          <div class="concept">
+            <h4>Референдум 2022 года</h4>
+            <p>В июне 2022 года граждане на референдуме одобрили пакет из 56 поправок. Ключевые изменения: ограничение срока президентства одним сроком, восстановление КС, право граждан обращаться в КС напрямую, запрет на госдолжности для родственников Президента.</p>
+          </div>
+        </div></div>
+      </div>
+
+    </div><!-- /accordion -->
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══════════════════════════════════════ -->
+<section id="reviews">
+  <div class="container">
+    <div class="s-label">Отзывы</div>
+    <h2 class="s-title">Что говорят наши пользователи</h2>
+    <p class="s-sub">Тысячи казахстанцев уже изучили Конституцию вместе с нами.</p>
+    <div class="reviews-grid">
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">«Наконец-то я понял, что такое разделение властей! Объяснения через аналогии из жизни — это гениально. Прошёл тест с первого раза на 90%.»</p>
+        <div class="rv-author">
+          <div class="rv-avatar">АС</div>
+          <div>
+            <div class="rv-name">Асхат Сейткали</div>
+            <div class="rv-city">Алматы</div>
+          </div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">«Работаю учителем истории. Посоветую сайт ученикам — намного доступнее учебника. Раздел о реформах 2022 года особенно полезен и актуален.»</p>
+        <div class="rv-author">
+          <div class="rv-avatar">ДН</div>
+          <div>
+            <div class="rv-name">Динара Нургалиева</div>
+            <div class="rv-city">Астана</div>
+          </div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-stars">★★★★☆</div>
+        <p class="rv-text">«Читал с телефона — всё удобно, текст не мелкий. За час успел изучить все разделы. Раньше думал, что Конституция — это скучно. Оказалось нет!»</p>
+        <div class="rv-author">
+          <div class="rv-avatar">БЖ</div>
+          <div>
+            <div class="rv-name">Бауыржан Жаксыбеков</div>
+            <div class="rv-city">Шымкент</div>
+          </div>
+        </div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">«Как студентка юридического факультета могу сказать: объяснения точные. Это идеальный вводный курс для тех, кто раньше не сталкивался с правом.»</p>
+        <div class="rv-author">
+          <div class="rv-avatar">АМ</div>
+          <div>
+            <div class="rv-name">Айгерим Мухамбетова</div>
+            <div class="rv-city">Караганда</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUIZ ════════════════════════════════════════ -->
+<section id="quiz">
+  <div class="container">
+    <div class="s-label">Проверь себя</div>
+    <h2 class="s-title">Контрольный тест</h2>
+    <p class="s-sub">10 вопросов по всем разделам Конституции. Мгновенная обратная связь после каждого ответа.</p>
+    <div class="quiz-wrap">
+      <div class="qz-prog" id="qzProg">
+        <div class="qz-prog-row">
+          <span id="qzProgText">Вопрос 1 из 10</span>
+          <span id="qzProgPct">0%</span>
+        </div>
+        <div class="prog-bar"><div class="prog-fill" id="qzFill" style="width:0%"></div></div>
+      </div>
+      <div class="qz-card" id="qzCard">
+        <div class="qz-q" id="qzQ"></div>
+        <div class="qz-opts" id="qzOpts"></div>
+        <div class="qz-exp" id="qzExp"></div>
+        <div class="qz-next" id="qzNext">
+          <button class="btn btn-green" onclick="nextQ()" style="width:100%" id="qzNextBtn">Следующий вопрос →</button>
+        </div>
+      </div>
+      <div class="qz-result" id="qzResult">
+        <span class="res-score" id="resScore"></span>
+        <div class="res-level" id="resLevel"></div>
+        <p class="res-desc" id="resDesc"></p>
+        <button class="btn btn-green" onclick="restartQuiz()">Пройти ещё раз</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAYMENT ══════════════════════════════════════ -->
+<section id="payment">
+  <div class="container t-center">
+    <div class="s-label">Получить доступ</div>
+    <h2 class="s-title">Одна оплата — полный доступ</h2>
+    <p class="s-sub" style="margin:0 auto;">Изучайте в удобном темпе, возвращайтесь к материалам когда угодно.</p>
+    <div class="pay-card">
+      <div class="pay-price">1 990 ₸</div>
+      <div class="pay-note">единовременная оплата · мгновенный доступ</div>
+      <ul class="pay-list">
+        <li><span class="chk">✓</span> Полный курс: Преамбула + 9 разделов</li>
+        <li><span class="chk">✓</span> Простые объяснения с аналогиями из жизни</li>
+        <li><span class="chk">✓</span> Тест из 10 вопросов с разбором ответов</li>
+        <li><span class="chk">✓</span> Информация о реформах 2022 года</li>
+        <li><span class="chk">✓</span> Удобное чтение с телефона</li>
+        <li><span class="chk">✓</span> Поддержка через WhatsApp</li>
+      </ul>
+      <a href="https://pay.kaspi.kz" target="_blank" rel="noopener" class="btn-kaspi">Оплатить через Kaspi Pay</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <p><strong>Конституция РК: Понятно каждому</strong></p>
+  <p style="margin-top:8px">Образовательный проект. Содержание основано на официальном тексте Конституции Республики Казахстан с учётом поправок 2022 года.</p>
+  <p style="margin-top:8px">© 2025 · Поддержка: <a href="https://wa.me/77000000000">WhatsApp</a></p>
+</footer>
+
+<!-- ══ WHATSAPP FLOAT ══════════════════════════════ -->
+<a href="https://wa.me/77000000000" target="_blank" rel="noopener" class="wa-btn" title="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  /* ── ACCORDION ─────────────────────────────────── */
+  function toggleAc(header) {
+    const item = header.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.ac-item').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  /* ── QUIZ DATA ──────────────────────────────────── */
+  const QS = [
+    {
+      q: "Что является высшей ценностью государства по Конституции РК?",
+      opts: ["Территориальная целостность страны", "Человек, его жизнь, права и свободы", "Государственная власть и суверенитет", "Экономическое развитие и процветание"],
+      ans: 1,
+      exp: "Статья 1: «Высшей ценностью в Республике Казахстан являются человек, его жизнь, права и свободы». Государство существует ради людей, а не наоборот."
+    },
+    {
+      q: "Какой язык является государственным языком Казахстана?",
+      opts: ["Русский", "Казахский и русский в равных правах", "Казахский", "Определяется каждым регионом самостоятельно"],
+      ans: 2,
+      exp: "Государственный язык Казахстана — казахский. Русский официально используется наравне с казахским в государственных организациях, но государственным языком остаётся казахский."
+    },
+    {
+      q: "Из каких двух палат состоит Парламент Казахстана?",
+      opts: ["Мажилис и Совет Республики", "Сенат и Государственная Дума", "Сенат и Мажилис", "Народное собрание и Мажилис"],
+      ans: 2,
+      exp: "Парламент РК состоит из двух палат: Сенат (верхняя палата, 50 сенаторов) и Мажилис (нижняя палата, 98 депутатов). Вместе они принимают законы страны."
+    },
+    {
+      q: "На какой срок избирается Президент Казахстана согласно Конституции?",
+      opts: ["5 лет", "6 лет", "7 лет", "4 года"],
+      ans: 2,
+      exp: "После реформы 2022 года Президент избирается на 7 лет и может занимать этот пост только один раз без права переизбрания. Это ограничение предотвращает концентрацию власти."
+    },
+    {
+      q: "Что означает принцип презумпции невиновности?",
+      opts: ["Государство всегда право в споре с гражданином", "Подозреваемый сам обязан доказать свою невиновность", "Каждый считается невиновным, пока суд не докажет обратное", "Обвинение в уголовном деле всегда является обоснованным"],
+      ans: 2,
+      exp: "Презумпция невиновности — фундаментальный принцип: человек невиновен до тех пор, пока его вина не доказана судом. Бремя доказывания лежит на обвинении, а не на обвиняемом."
+    },
+    {
+      q: "Какое новое право получили граждане по реформе Конституции 2022 года?",
+      opts: ["Право на бесплатное жильё от государства", "Право напрямую обращаться в Конституционный суд", "Право избирать и отзывать акимов районов", "Право на гарантированную государственную зарплату"],
+      ans: 1,
+      exp: "Реформа 2022 года восстановила Конституционный суд и дала гражданам право напрямую обращаться в него, если они считают, что применённый закон нарушает их конституционные права. Ранее это могли делать только государственные органы."
+    },
+    {
+      q: "Как называется глава региона (области или района) в Казахстане?",
+      opts: ["Губернатор", "Мэр", "Аким", "Префект"],
+      ans: 2,
+      exp: "Аким — глава местного исполнительного органа (акимата). Акимы управляют областями, городами и районами, отвечая за местную инфраструктуру, образование, здравоохранение и ЖКХ."
+    },
+    {
+      q: "Каким образом вносятся изменения в Конституцию РК?",
+      opts: ["По указу Президента Республики", "Через Парламент (не менее 2/3 голосов) или на референдуме", "По решению Правительства с одобрения Президента", "Автоматически каждые 10 лет на специальном съезде"],
+      ans: 1,
+      exp: "Конституцию изменить непросто: поправки принимаются квалифицированным большинством Парламента (не менее 2/3 голосов каждой палаты) или выносятся на всенародный референдум. Некоторые основы не могут быть изменены вовсе."
+    },
+    {
+      q: "Что означает принцип разделения властей?",
+      opts: ["Деление страны на административные регионы", "Распределение бюджета между государственными ведомствами", "Три независимые ветви: законодательная, исполнительная, судебная", "Разделение государственной собственности между министерствами"],
+      ans: 2,
+      exp: "Разделение властей — ключевой принцип демократии. Законодательная власть (Парламент) принимает законы, исполнительная (Правительство) их выполняет, судебная (суды) разрешает споры. Независимость ветвей не допускает концентрации власти."
+    },
+    {
+      q: "Какое ограничение введено для близких родственников Президента по реформе 2022 года?",
+      opts: ["Они не могут участвовать в выборах любого уровня", "Они не могут работать в частных коммерческих компаниях", "Они не могут занимать руководящие должности в госорганах и квазигоссекторе", "Они обязаны проживать за пределами столицы"],
+      ans: 2,
+      exp: "Реформа 2022 года установила прямой запрет: близкие родственники Президента не вправе занимать руководящие должности в государственных органах и квазигосударственных организациях. Это антикоррупционная мера против «семейного» захвата государства."
+    }
+  ];
+
+  let curQ = 0, score = 0, done = false;
+
+  function renderQ() {
+    const d = QS[curQ];
+    document.getElementById('qzQ').textContent = d.q;
+
+    const c = document.getElementById('qzOpts');
+    c.innerHTML = '';
+    d.opts.forEach((o, i) => {
+      const b = document.createElement('button');
+      b.className = 'qz-opt';
+      b.textContent = o;
+      b.onclick = () => pick(i);
+      c.appendChild(b);
+    });
+
+    document.getElementById('qzExp').className = 'qz-exp';
+    document.getElementById('qzNext').className = 'qz-next';
+    done = false;
+
+    const pct = Math.round(curQ / QS.length * 100);
+    document.getElementById('qzProgText').textContent = `Вопрос ${curQ + 1} из ${QS.length}`;
+    document.getElementById('qzProgPct').textContent = pct + '%';
+    document.getElementById('qzFill').style.width = pct + '%';
+    document.getElementById('qzNextBtn').textContent =
+      curQ === QS.length - 1 ? 'Посмотреть результат →' : 'Следующий вопрос →';
+  }
+
+  function pick(idx) {
+    if (done) return;
+    done = true;
+    const d = QS[curQ];
+    const btns = document.querySelectorAll('.qz-opt');
+    btns.forEach(b => b.disabled = true);
+    btns[idx].classList.add(idx === d.ans ? 'correct' : 'wrong');
+    if (idx !== d.ans) btns[d.ans].classList.add('correct');
+    if (idx === d.ans) score++;
+    const exp = document.getElementById('qzExp');
+    exp.textContent = d.exp;
+    exp.className = 'qz-exp show';
+    document.getElementById('qzNext').className = 'qz-next show';
+  }
+
+  function nextQ() {
+    curQ++;
+    if (curQ >= QS.length) showResult();
+    else renderQ();
+  }
+
+  function showResult() {
+    document.getElementById('qzProg').style.display = 'none';
+    document.getElementById('qzCard').style.display = 'none';
+    const pct = Math.round(score / QS.length * 100);
+    let lv, desc;
+    if (pct >= 90) {
+      lv = "Отлично!";
+      desc = "Вы превосходно знаете Конституцию Казахстана. Вы готовы к любым дискуссиям о правах и устройстве государства.";
+    } else if (pct >= 70) {
+      lv = "Хорошо!";
+      desc = "Хорошие знания. Вы понимаете основы Конституции. Рекомендуем ещё раз перечитать разделы, где допустили ошибки.";
+    } else if (pct >= 50) {
+      lv = "Неплохо, стоит повторить";
+      desc = "Есть базовое понимание, но некоторые разделы требуют дополнительного внимания. Пройдите курс ещё раз.";
+    } else {
+      lv = "Требуется повторное изучение";
+      desc = "Не расстраивайтесь! Пройдите курс заново, обращая особое внимание на аналогии и ключевые концепции.";
+    }
+    document.getElementById('resScore').textContent = pct + '%';
+    document.getElementById('resLevel').textContent = lv;
+    document.getElementById('resDesc').textContent = desc;
+    document.getElementById('qzResult').className = 'qz-result show';
+  }
+
+  function restartQuiz() {
+    curQ = 0; score = 0; done = false;
+    document.getElementById('qzProg').style.display = '';
+    document.getElementById('qzCard').style.display = '';
+    document.getElementById('qzResult').className = 'qz-result';
+    renderQ();
+  }
+
+  renderQ();
+</script>
+</body>
+</html>
